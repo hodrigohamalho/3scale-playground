@@ -15,7 +15,7 @@ image::images/create-realm-01.png[Create a realm]
 It will help the next commands more readable.
 
     SSO_HOST=sso-sso.apps.ramalho-aa51.open.redhat.com
-    SSO_REALM=redhat
+    REALM=redhat
     CERT=cert.pem
 
 == Setup Zync and RHSSO Communication
