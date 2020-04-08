@@ -6,7 +6,7 @@ to work with APIs using OpenID Connect (OIDC).
 * Tested version: 3Scale 2.8
 * Official doc: https://access.redhat.com/documentation/en-us/red_hat_3scale_api_management/2.8/html-single/administering_the_api_gateway/index#configure-oidc-rhsso-integration
 
-. Create a tenant (realm) on Red Hat Single Sign On 
+== Create a tenant (realm) on Red Hat Single Sign On 
 
 image::images/create-realm-01.png[Create a realm]
 
