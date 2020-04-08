@@ -18,17 +18,17 @@ It will help the next commands more readable.
     SSO_REALM=redhat
     CERT=cert.pem
 
-Setup Zync and RHSSO Communication
+== Setup Zync and RHSSO Communication
 
 A lot of times clusters are using self signed certs, so you need to make the Zync-que component of 3Scale trust on the cert from RHSSO. 
 
-. Get the RHSSO cert
+=== Get the RHSSO cert
 
     echo | openssl s_client -connect $SSO_HOST:443 -servername $SSO_HOST -showcerts 2>&1 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > $CERT
 
 If you do a `ls` you will show that a cert.pem was created from the previous command. 
 
-. Test to show if it's working. 
+=== Test to show if it's working. 
 
     curl -v https://$SSO_HOST/auth/realms/$REALM --cacert $CERT
 
@@ -36,7 +36,11 @@ The output should be a JSON, like this:
 
     {"realm":"redhat","public_key":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAp5k3kKzOa6Kj4WDoVhw6v/rhN5ti0uwNCbenpYZlkNoj+m+xlSZZCavdYpScibZmwsIb2p8EUi/h0codf/EAdq/LJ4Dq4uUZMMWauXymEF15PUgu05WHDd6Q2zZFbFtHcrnccmrhIAt0iuTX/+EOsbbmp85LJOVskpTve4RFkBICo8If3tP64IVh+OPr7BW7zPNj81sobLgvzJYg6Ic1LWRPb+WpTBYqSHPs9Y6etlOE+qibKH5hwaI/4L6MaVdJ5yZpUNREJZ6Y997xmTbzdiW6w0IK5w+OF/CiI+P5KcWK8oCDsyNUn1jEwMIky+YUwWgdQNQUZhhBO+BNRkDD0wIDAQAB","token-service":"https://sso-sso.apps.ramalho-aa51.open.redhat.com/auth/realms/redhat/protocol/openid-connect","account-service":"https://sso-sso.apps.ramalho-aa51.open.redhat.com/auth/realms/redhat/account","tokens-not-before":0}* Closing connection 0
 
-. Create a 3scale client, this client will be the responsable for create the clients in RHSSO delegated by 3Scale.
+== Setup 3Scale client in RHSSO
+
+=== Create a 3scale-adm client
+
+This client will be the responsable for create the clients in RHSSO delegated by 3Scale.
 
 image::images/create-client-01.png[Create a client]
 image::images/create-client-02.png[Create a client]
@@ -50,12 +54,14 @@ Just take note of this credentials, we will need it later:
 image::images/create-client-04.png[Create a client]
 
 
-. Also create a *user*, could be any user, we will use it to test the integration
+=== Create a *user*, could be any user, we will use it to test the integration
 
 image::images/create-user-01.png[Create a user]
 image::images/create-user-02.png[Create a user]
 
-. On 3Scale select Configuration into the API side menu
+=== Configure the API to use OIDC 
+
+On 3Scale select *Settings* into the API side menu
 
 image::images/api-oidc-01.png[Configure the API]
 
