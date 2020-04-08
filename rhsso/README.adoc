@@ -1,0 +1,74 @@
+= 3Scale API with OIDC
+
+This is a tutorial about how to correctly setup the integration between 3Scale API Management and Red Hat Single Sign On (Keycloak), 
+to work with APIs using OpenID Connect (OIDC).
+
+* Tested version: 3Scale 2.8
+* Official doc: https://access.redhat.com/documentation/en-us/red_hat_3scale_api_management/2.8/html-single/administering_the_api_gateway/index#configure-oidc-rhsso-integration
+
+. Create a tenant (realm) on Red Hat Single Sign On 
+
+image::create-realm-01.png[Create a realm]
+
+. Set the following variables in your terminal, 
+
+It will help the next commands more readable.
+
+    SSO_HOST=sso-sso.apps.ramalho-aa51.open.redhat.com
+    SSO_REALM=redhat
+    CERT=cert.pem
+
+Setup Zync and RHSSO Communication
+
+A lot of times clusters are using self signed certs, so you need to make the Zync-que component of 3Scale trust on the cert from RHSSO. 
+
+. Get the RHSSO cert
+
+    echo | openssl s_client -connect $SSO_HOST:443 -servername $SSO_HOST -showcerts 2>&1 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > $CERT
+
+If you do a `ls` you will show that a cert.pem was created from the previous command. 
+
+. Test to show if it's working. 
+
+    curl -v https://$SSO_HOST/auth/realms/$REALM --cacert $CERT
+
+The output should be a JSON, like this: 
+
+    {"realm":"redhat","public_key":"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAp5k3kKzOa6Kj4WDoVhw6v/rhN5ti0uwNCbenpYZlkNoj+m+xlSZZCavdYpScibZmwsIb2p8EUi/h0codf/EAdq/LJ4Dq4uUZMMWauXymEF15PUgu05WHDd6Q2zZFbFtHcrnccmrhIAt0iuTX/+EOsbbmp85LJOVskpTve4RFkBICo8If3tP64IVh+OPr7BW7zPNj81sobLgvzJYg6Ic1LWRPb+WpTBYqSHPs9Y6etlOE+qibKH5hwaI/4L6MaVdJ5yZpUNREJZ6Y997xmTbzdiW6w0IK5w+OF/CiI+P5KcWK8oCDsyNUn1jEwMIky+YUwWgdQNQUZhhBO+BNRkDD0wIDAQAB","token-service":"https://sso-sso.apps.ramalho-aa51.open.redhat.com/auth/realms/redhat/protocol/openid-connect","account-service":"https://sso-sso.apps.ramalho-aa51.open.redhat.com/auth/realms/redhat/account","tokens-not-before":0}* Closing connection 0
+
+. Create a 3scale client, this client will be the responsable for create the clients in RHSSO delegated by 3Scale.
+
+image::create-client-01.png[Create a client]
+image::create-client-02.png[Create a client]
+image::create-client-03.png[Create a client]
+
+Just take note of this credentials, we will need it later:
+
+    Client ID: 3scale-admin 
+    Secret: ...
+
+image::create-client-04.png[Create a client]
+
+
+. Also create a *user*, could be any user, we will use it to test the integration
+
+image::create-user-01.png[Create a user]
+image::create-user-02.png[Create a user]
+
+. On 3Scale select Configuration into the API side menu
+
+image::api-oidc-01.png[Configure the API]
+
+. Select the option *OpenID Connect Use OpenID Connect for any Oauth2 flow.* under *AUTHENTICATION* session.
+
+. On the field *OpenID Connect Issuer*
+
+You will use the credentials generated before in the following format: 
+
+    https://<CLIENT_ID>:<CLIENT_SECRET>@<RHSSO_HOST>:<RHSSO_PORT>/auth/realms/<REALM_NAME>
+
+So the result in my curently example is:
+
+    https://3scale-admin:939bb4b6-3704-485f-8c7d-d07cd23fb13f@sso-sso.apps.ramalho-aa51.open.redhat.com:443/auth/realms/redhat
+
+
