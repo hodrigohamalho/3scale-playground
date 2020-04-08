@@ -8,7 +8,7 @@ to work with APIs using OpenID Connect (OIDC).
 
 . Create a tenant (realm) on Red Hat Single Sign On 
 
-image::create-realm-01.png[Create a realm]
+image::images/create-realm-01.png[Create a realm]
 
 . Set the following variables in your terminal, 
 
@@ -38,26 +38,26 @@ The output should be a JSON, like this:
 
 . Create a 3scale client, this client will be the responsable for create the clients in RHSSO delegated by 3Scale.
 
-image::create-client-01.png[Create a client]
-image::create-client-02.png[Create a client]
-image::create-client-03.png[Create a client]
+image::images/create-client-01.png[Create a client]
+image::images/create-client-02.png[Create a client]
+image::images/create-client-03.png[Create a client]
 
 Just take note of this credentials, we will need it later:
 
     Client ID: 3scale-admin 
     Secret: ...
 
-image::create-client-04.png[Create a client]
+image::images/create-client-04.png[Create a client]
 
 
 . Also create a *user*, could be any user, we will use it to test the integration
 
-image::create-user-01.png[Create a user]
-image::create-user-02.png[Create a user]
+image::images/create-user-01.png[Create a user]
+image::images/create-user-02.png[Create a user]
 
 . On 3Scale select Configuration into the API side menu
 
-image::api-oidc-01.png[Configure the API]
+image::images/api-oidc-01.png[Configure the API]
 
 . Select the option *OpenID Connect Use OpenID Connect for any Oauth2 flow.* under *AUTHENTICATION* session.
 
