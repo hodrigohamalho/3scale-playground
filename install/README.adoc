@@ -21,8 +21,7 @@ Components of the architecture:
 
 . Create a project
 . Install the 3Scale Operator using the OLM
-
-Run the install script: 
+. Run the install script: 
 
     ./install.sh 
 
@@ -30,13 +29,13 @@ The install uses the yml listed here, to create all the secrets to connect with 
 
 Remember to adjust the parameters with your credentials, environments etc. 
 
-Source: 
+=== Source: 
 
-https://access.redhat.com/documentation/en-us/red_hat_3scale_api_management/2.8/html-single/installing_3scale/index#installing-threescale-operator-on-openshift
-https://access.redhat.com/documentation/en-us/red_hat_3scale_api_management/2.8/html-single/installing_3scale/index#deploying-threescale-using-the-operator
+* https://access.redhat.com/documentation/en-us/red_hat_3scale_api_management/2.8/html-single/installing_3scale/index#installing-threescale-operator-on-openshift
+* https://access.redhat.com/documentation/en-us/red_hat_3scale_api_management/2.8/html-single/installing_3scale/index#deploying-threescale-using-the-operator
 
 
-=== Issues right now 
+== Issues right now 
 
 The following pods aren't deploying: 
 
