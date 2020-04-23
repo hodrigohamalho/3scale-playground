@@ -3,12 +3,16 @@
 This guide looks to explore how to perform a 3scale installation in an Openshift 4 cluster using 
 the 3Scale Operator.
 
-In this scenario, we are going to deploy both databases: Postgres and Redis outside of the 3scale operator 
-domain. So the databases itself isn't managed by the 3Scale Operator.
+In this scenario, I'll be using the Postgres database outside OCP and Redis inside Openshift but out of the 
+Operator management. 
 
-Diagram of the architecture:
+Diagram of the staging architecture:
 
-image::images/architecture.png[Architecture]
+image::images/architecture-stag.png[Staging Architecture]
+
+Diagram of the production architecture:
+
+image::images/architecture-prod.png[Production Architecture]
 
 Components of the architecture:
 
