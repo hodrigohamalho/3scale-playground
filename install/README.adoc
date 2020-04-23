@@ -31,19 +31,8 @@ Remember to adjust the parameters with your credentials, environments etc.
 
 === Source: 
 
-* https://access.redhat.com/documentation/en-us/red_hat_3scale_api_management/2.8/html-single/installing_3scale/index#installing-threescale-operator-on-openshift
-* https://access.redhat.com/documentation/en-us/red_hat_3scale_api_management/2.8/html-single/installing_3scale/index#deploying-threescale-using-the-operator
-
-== Issues right now 
-
-The following pods aren't deploying: 
-
-* apicast-production
-* system-app
-* system-sidekiq
-* system-sphinx
-
-Problem connecting to a Postgres database, to see that problem take a look at *system-app-1-hook-pre* container.
+* https://access.redhat.com/documentation/en-us/red_hat_3scale_api_management/2.8/html-single/installing_3scale/index#installing-threescale-operator-on-openshift[Installing the 3Scale Operator]
+* https://access.redhat.com/documentation/en-us/red_hat_3scale_api_management/2.8/html-single/installing_3scale/index#deploying-threescale-using-the-operator[Installing 3Scale using Operator]
 
 == Issues Related
 
