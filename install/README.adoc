@@ -61,7 +61,9 @@ Adjust these files with the correct parameters.
 * Replace Redis to Redis Sentinel 
 * Setup persistence on the Redis database 
 
-== Issues Related
+== Jiras Related
 
-https://issues.redhat.com/browse/THREESCALE-5061
+* https://issues.redhat.com/browse/THREESCALE-5061
+* https://issues.redhat.com/browse/THREESCALE-5088
+* https://issues.redhat.com/browse/THREESCALE-5087 
 
