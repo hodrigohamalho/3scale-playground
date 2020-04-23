@@ -3,7 +3,7 @@
 This guide looks to explore how to perform a 3scale installation in an Openshift 4 cluster using 
 the 3Scale Operator.
 
-In this scenario, I'll be using the Postgres database outside OCP and Redis inside Openshift but out of the 
+In this scenario, I'll be using Postgres database outside OCP and Redis inside Openshift but out of the 
 Operator management. 
 
 Diagram of the staging architecture:
@@ -41,13 +41,13 @@ not be able to not use none storageClass, so it's necessary to create a specific
 
 * link:02-storage.yml[02-storage.yml]
 
-* link:03-apimanager-stag.yml[02-apimanager.yml]
+Below is a CR template used to deploy the API Management in a staging environment.
 
-This is a CR template used to deploy the API Management in a staging environment.
+* link:03-apimanager-stag.yml[02-apimanager-stag.yml]
 
-* link:03-apimanager-prod.yml[02-apimanager.yml]
+For the production environment.
 
-This is a CR template used to deploy the API Management in a *production* environment.
+* link:03-apimanager-prod.yml[02-apimanager-prod.yml]
 
 Adjust these files with the correct parameters.
 
