@@ -1,10 +1,11 @@
 #!/bin/bash
-oc project 3scale
+# Before to execute it, certify to be on the correct project and with the 3scale operator already installed
+
 # Generate a new token here: https://access.redhat.com/terms-based-registry
 oc create secret docker-registry threescale-registry-auth \
-    --docker-server=registry.redhat.io \
-    --docker-username="1234|username" \
-    --docker-password="your-token"
+   --docker-server=registry.redhat.io \
+   --docker-username="1234|user" \
+   --docker-password="asdadsdasdasdsadasd"
 
 # Instal Redis
 oc new-app registry.redhat.io/rhel8/redis-5 -e REDIS_PASSWORD=redhat --source-secret=threescale-registry-auth
