@@ -8,7 +8,7 @@ Operator management.
 
 Diagram of the staging architecture:
 
-image::images/architecture-stag.png[Staging Architecture]
+image::images/architecture-staging.png[Staging Architecture]
 
 Diagram of the production architecture:
 
