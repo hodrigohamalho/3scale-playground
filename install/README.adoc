@@ -25,17 +25,39 @@ Components of the architecture:
 
     ./install.sh 
 
-The install uses the yml listed here, to create all the secrets to connect with the databases.
+The install uses these 03 yml files listed here, that you have to adjust as needed:
 
-Remember to adjust the parameters with your credentials, environments etc. 
+Create all the secrets to connect to the databases of the customer
+
+* link:01-secrets.yml[01-secrets.yml]
+
+Create the PersistenceVolume with a storageClass pointed to it. The storageClass 
+is necessary because if there is already a storageClass selected as default you will 
+not be able to not use none storageClass, so it's necessary to create a specific one.
+
+* link:02-storage.yml[02-storage.yml]
+
+* link:03-apimanager-stag.yml[02-apimanager.yml]
+
+This is a CR template used to deploy the API Management in a staging environment.
+
+* link:03-apimanager-prod.yml[02-apimanager.yml]
+
+This is a CR template used to deploy the API Management in a *production* environment.
+
+Adjust these files with the correct parameters.
 
 === Source: 
 
 * https://access.redhat.com/documentation/en-us/red_hat_3scale_api_management/2.8/html-single/installing_3scale/index#installing-threescale-operator-on-openshift[Installing the 3Scale Operator]
 * https://access.redhat.com/documentation/en-us/red_hat_3scale_api_management/2.8/html-single/installing_3scale/index#deploying-threescale-using-the-operator[Installing 3Scale using Operator]
 
+== TODO 
+
+* Replace Redis to Redis Sentinel 
+* Setup persistence on the Redis database 
+
 == Issues Related
 
 https://issues.redhat.com/browse/THREESCALE-5061
-
 
