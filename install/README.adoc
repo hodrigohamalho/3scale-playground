@@ -6,15 +6,15 @@ the 3Scale Operator.
 In this scenario, I'll be using Postgres database outside OCP and Redis inside Openshift but out of the 
 Operator management. 
 
-Diagram of the staging architecture:
+== Staging architecture
 
 image::images/architecture-staging.png[Staging Architecture]
 
-Diagram of the production architecture:
+== Production Architecture
 
 image::images/architecture-prod.png[Production Architecture]
 
-Components of the architecture:
+== Components version
 
 * Openshift 4.2
 * 3Scale 2.8
