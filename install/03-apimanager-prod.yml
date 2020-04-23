@@ -1,0 +1,36 @@
+apiVersion: apps.3scale.net/v1alpha1
+kind: APIManager
+metadata:
+  name: production
+spec:
+  wildcardDomain: apps.cluster-latam-df83.latam-df83.example.opentlc.com
+  resourceRequirementsEnabled: false
+  highAvailability:
+    enabled: true
+  system:
+    fileStorage:
+      persistentVolumeClaim:
+        storageClassName: nfs-storage
+    database:
+      postgresql: {}
+    appSpec:
+      replicas: 2
+    sidekiqSpec:
+      replicas: 2
+  apicast:
+    productionSpec:
+      replicas: 2
+    stagingSpec:
+      replicas: 2
+  backend:
+    listenerSpec:
+      replicas: 2
+    workerSpec:
+      replicas: 2
+    cronSpec:
+      replicas: 2
+  zync:
+    AppSpec:
+      replicas: 2
+    QueSpec:
+      replicas: 2

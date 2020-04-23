@@ -1,0 +1,15 @@
+apiVersion: apps.3scale.net/v1alpha1
+kind: APIManager
+metadata:
+  name: staging
+spec:
+  wildcardDomain: apps.cluster-latam-df83.latam-df83.example.opentlc.com
+  resourceRequirementsEnabled: false
+  highAvailability:
+    enabled: true
+  system:
+    fileStorage:
+      persistentVolumeClaim:
+        storageClassName: nfs-storage
+    database:
+      postgresql: {}
