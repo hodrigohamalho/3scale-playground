@@ -4,7 +4,7 @@ metadata:
   name: production
 spec:
   wildcardDomain: apps.cluster-latam-df83.latam-df83.example.opentlc.com
-  resourceRequirementsEnabled: false
+  resourceRequirementsEnabled: true
   highAvailability:
     enabled: true
   system:
