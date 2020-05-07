@@ -25,6 +25,12 @@ image::images/architecture-prod.png[Production Architecture]
 
 . Create a project
 . Install the 3Scale Operator using the OLM
+
+image::images/operator-install-01.png[Operator Install]
+image::images/operator-install-02.png[Operator Install]
+image::images/operator-install-03.png[Operator Install]
+image::images/operator-install-04.png[Operator Install]
+
 . Run the install script: 
 
     ./install.sh 
