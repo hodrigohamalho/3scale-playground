@@ -45,7 +45,9 @@ Create the PersistenceVolume with a storageClass pointed to it. The storageClass
 is necessary because if there is already a storageClass selected as default you will 
 not be able to not use none storageClass, so it's necessary to create a specific one.
 
-* link:02-storage.yml[02-storage.yml]
+* link:02-3scale-storage.yml[02-3scale-storage.yml]
+* link:02-redis-storage.yml[02-redis-storage.yml]
+* link:02-postgres-storage.yml[02-postgres-storage.yml]
 
 Below is a CR template used to deploy the API Management in a staging environment.
 
