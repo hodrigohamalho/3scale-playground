@@ -3,5 +3,13 @@ kind: APIManager
 metadata:
   name: staging
 spec:
-  wildcardDomain: apps.cluster-latam-7c58.latam-7c58.example.opentlc.com
-  resourceRequirementsEnabled: true
+  wildcardDomain: apps.cluster-latam-df83.latam-df83.example.opentlc.com
+  resourceRequirementsEnabled: false
+  highAvailability:
+    enabled: true
+  system:
+    fileStorage:
+      persistentVolumeClaim:
+        storageClassName: nfs-storage
+    database:
+      postgresql: {}
