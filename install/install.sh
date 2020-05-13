@@ -4,8 +4,8 @@
 # Generate a new token here: https://access.redhat.com/terms-based-registry
 oc create secret docker-registry threescale-registry-auth \
    --docker-server=registry.redhat.io \
-   --docker-username="aaaa" \
-   --docker-password="bbbbbbb"
+   --docker-username="aa" \
+   --docker-password="bbb"
 
 oc delete secrets backend-redis system-database 
 # Create the secrets for the external databases
@@ -19,9 +19,9 @@ oc create -f 02-postgres-storage.yml
 oc new-app registry.redhat.io/rhel8/redis-5 --name=redis -e REDIS_PASSWORD=redhat --source-secret=threescale-registry-auth
 oc set volume dc redis --add --overwrite --name=redis-volume-1 --type=persistentVolumeClaim --claim-name=redis-claim --mount-path=/var/lib/redis/data
 
-# Install Postgres
+# Install Postgres (https://catalog.redhat.com/software/containers/detail/5ba0ae0ddd19c70b45cbf4cd)
 oc new-app registry.redhat.io/rhel8/postgresql-10 --name=postgres --source-secret=threescale-registry-auth -e POSTGRESQL_USER=redhat -e POSTGRESQL_PASSWORD=redhat -e POSTGRESQL_DATABASE=system
-# TODO POSTGRES STORAGE
+oc set volume dc postgres --add --overwrite --name=postgres-volume --type=persistentVolumeClaim --claim-size=5Gi --mount-path=/var/lib/pgsql/data
 
 # Install the 3Scale API Manager
 oc create -f 03-apimanager.yml
