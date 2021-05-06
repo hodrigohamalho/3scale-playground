@@ -1,0 +1,35 @@
+# 3Scale Install with Operator
+
+This guide looks to explore how to perform a 3scale installation in an Openshift 4 cluster using 
+the 3Scale Operator.
+
+In this scenario, I'll be using Postgres database outside OCP and Redis inside Openshift but out of the 
+Operator management. 
+
+== Components version
+
+* Openshift 4.2
+* 3Scale 2.8
+* Redis 5
+* Postgres 10
+
+== Install 
+
+. Create a project
+. Install the 3Scale Operator using the OLM
+
+image::images/operator-install-01.png[Operator Install]
+image::images/operator-install-02.png[Operator Install]
+image::images/operator-install-03.png[Operator Install]
+image::images/operator-install-04.png[Operator Install]
+
+. Create the persistence volume (Just in case that you don't have a RWX volume option available)
+
+    oc create -f system-storage.yaml
+
+. Open the `apimanager.yaml` and update the `wildcardDomain`, and create it.
+
+    oc create -f apimanager.yaml
+
+
+
