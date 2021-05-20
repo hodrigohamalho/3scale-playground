@@ -6,13 +6,6 @@ the 3Scale Operator.
 In this scenario, I'll be using Postgres database outside OCP and Redis inside Openshift but out of the 
 Operator management. 
 
-== Components version
-
-* Openshift 4.2
-* 3Scale 2.8
-* Redis 5
-* Postgres 10
-
 == Install 
 
 . Create a project
@@ -31,5 +24,7 @@ image::images/operator-install-04.png[Operator Install]
 
     oc create -f apimanager.yaml
 
+. Create the RHSSO 
 
+    oc new-app --template=sso74-ocp4-x509-postgresql-persistent
 

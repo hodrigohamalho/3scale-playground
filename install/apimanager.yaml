@@ -3,5 +3,5 @@ kind: APIManager
 metadata:
   name: 3scale
 spec:
-  wildcardDomain: apps.cluster-a277.a277.sandbox1243.opentlc.com
+  wildcardDomain: apps.cluster-27d6.27d6.sandbox1865.opentlc.com 
   resourceRequirementsEnabled: false
