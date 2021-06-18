@@ -1,0 +1,17 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  name: prometheus
+spec:
+  podMonitorSelector:
+    matchExpressions:
+    - key: app
+      operator: In
+      values:
+      - 3scale-api-management
+  ruleSelector:
+    matchExpressions:
+    - key: app
+      operator: In
+      values:
+      - 3scale-api-management
