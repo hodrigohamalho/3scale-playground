@@ -1,0 +1,62 @@
+apiVersion: capabilities.3scale.net/v1beta1
+kind: Backend
+metadata:
+  name: publicbanks
+spec:
+  name: "publicbanks"
+  privateBaseURL: "https://api.openbankproject.com:443"
+  methods:
+    banks:
+      friendlyName: banks
+    banks_id:
+      friendlyName: banks by id
+    atms:
+      friendlyName: atms
+    atms_id:
+      friendlyName: atms by id
+    products:
+      friendlyName: products
+    products_id:
+      friendlyName: products by code
+    branches:
+      friendlyName: branches
+    branches_id:
+      friendlyName: branches by id
+  mappingRules:
+    - httpMethod: GET
+      pattern: "/banks"
+      increment: 1
+      metricMethodRef: banks
+    - httpMethod: GET
+      pattern: "/banks/{bank_id}"
+      increment: 1
+      metricMethodRef: banks_id
+    - httpMethod: GET
+      pattern: "/banks/{bank_id}/atms"
+      increment: 1
+      metricMethodRef: atms
+    - httpMethod: GET
+      pattern: "/banks/{bank_id}/atms/{atm_id}"
+      increment: 1
+      metricMethodRef: atms_id
+    - httpMethod: GET
+      pattern: "/banks/{bank_id}/products"
+      increment: 1
+      metricMethodRef: products
+    - httpMethod: GET
+      pattern: "/banks/{bank_id}/products/{product_code}"
+      increment: 1
+      metricMethodRef: products_id
+    - httpMethod: GET
+      pattern: "/banks/{bank_id}/branches"
+      increment: 1
+      metricMethodRef: branches
+    - httpMethod: GET
+      pattern: "/banks/{bank_id}/branches/{branch_id}"
+      increment: 1
+      metricMethodRef: branches_id
+  metrics:
+    hits:
+      description: Number of API hits
+      friendlyName: Hits
+      unit: "hit"

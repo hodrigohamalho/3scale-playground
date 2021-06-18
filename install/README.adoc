@@ -28,3 +28,34 @@ image::images/operator-install-04.png[Operator Install]
 
     oc new-app --template=sso74-ocp4-x509-postgresql-persistent
 
+
+=== Creating your first API with 3Scale 
+
+. Create a backend (public-banks)
+.. Create the methods
+.. Create the mapping rules
+
+. Create a backend (private-banks)
+.. Create the methods
+.. Create the mapping rules
+
+. Create the product 
+.. associate the backends with the product 
+
+. Create an application Plan 
+.. Sandbox
+... Create a rate limit of 10 request per minute
+.. Production 
+
+. Create an application (Audience > Select an Account > Click on the breadcrumb Application > Create Application)
+.. Name it as atm-finder (8df307092ac9b717c5328401466d1748)
+.. Select the production as the application plan 
+
+. Create another application
+.. Name it as wallet (0dc2bd78fb2303e13c094854105b3b51)
+.. Select the sandbox as the application plan 
+
+. Promote to staging 
+
+
+

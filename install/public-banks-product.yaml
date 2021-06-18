@@ -1,0 +1,29 @@
+apiVersion: capabilities.3scale.net/v1beta1
+kind: Product
+metadata:
+  name: openbanking
+spec:
+  name: "openbanking"
+  deployment:
+    apicastHosted: {}
+  backendUsages:
+    publicbanks:
+      path: /public
+  applicationPlans:
+    production:
+      name: "production"
+    sandbox:
+      name: "sandbox"
+      trialPeriod: 7
+      costMonth: "5"
+      limits:
+        - period: week
+          value: 100
+          metricMethodRef:
+            systemName: hits
+      pricingRules:
+        - from: 1
+          to: 100
+          pricePerUnit: "15.45"
+          metricMethodRef:
+            systemName: hits
