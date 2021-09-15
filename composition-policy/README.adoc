@@ -1,0 +1,100 @@
+= 3Scale Composition Custom Policy 
+:imagesdir: imgs
+:toc:
+:toc-title: 
+:icons:
+
+image::5-8-2021-17-59-53-PM.png[]
+
+This demo shows how to create a custo policy in Red Hat 3Scale using Camel-K.
+
+Basically we have one microservices that shows data of a person and the second one shows data of a bank account. Those are independent microservices and the policy do the composition between those microservices and return the data from a person with their respective bank accounts.
+
+Also it tooks a copy of that message and send to the topic `auditoria` in Kafka.
+
+:toc-placement!:
+
+== Pre requisites
+
+* VSCode Extension Pack for Apache Camel by Red Hat
+* OpenShift 4.x (tested on 4.8)
+
+== Demo
+
+=== Create Kubernetes namespace
+
+image::5-8-2021-18-04-21-PM.png[]
+
+image::5-8-2021-18-06-18-PM.png[]
+
+=== Microservices deploy
+
+==== Person microservice
+
+image:5-8-2021-18-07-42-PM.png[]
+
+image::5-8-2021-18-10-02-PM.png[]
+
+image::5-8-2021-18-11-05-PM.png[]
+
+image::5-8-2021-18-19-00-PM.png[]
+
+image::5-8-2021-18-19-38-PM.png[]
+
+==== Account microservice
+
+image:5-8-2021-18-07-42-PM.png[]
+
+image:5-8-2021-18-21-21-PM.png[]
+
+image:5-8-2021-18-22-08-PM.png[]
+
+image::5-8-2021-18-26-18-PM.png[]
+
+image::5-8-2021-18-26-57-PM.png[]
+
+=== Kafka Deploy
+
+Install the operator
+
+image::amq-streams-broker-operator-01.png[]
+
+Install the broker
+
+image::amq-streams-broker-deploy-01.png[]
+
+image::amq-streams-broker-deploy-02.png[]
+
+image::amq-streams-broker-deploy-03.png[]
+
+image::amq-streams-broker-deploy-04.png[]
+
+Create the `auditoria` topic
+
+image::amq-streams-create-topic-01.png[]
+
+image::amq-streams-create-topic-02.png[]
+
+image::amq-streams-create-topic-03.png[]
+
+image::amq-streams-create-topic-04.png[]
+
+
+=== Camel K Deploy
+
+Download and install the camel-k binary https://camel.apache.org/download/#camel-k
+
+Install the Camel-k Operator in the demo project
+
+image::camel-k-operator-install-01.png[]
+
+image::camel-k-operator-install-02.png[]
+
+image::camel-k-operator-install-03.png[]
+
+image::camel-k-operator-install-04.png[]
+
+Deploy the route
+
+    kamel run camel-k/Composition.java
+

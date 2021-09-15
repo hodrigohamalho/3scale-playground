@@ -1,0 +1,1 @@
+ARTIFACT_COPY_ARGS=-p -r quarkus-app/*
