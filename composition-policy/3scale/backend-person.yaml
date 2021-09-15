@@ -4,57 +4,21 @@ metadata:
   name: person
 spec:
   name: "person"
-  privateBaseURL: "http://pessoas-quarkus-demo.demo.svc:8080/pessoas"
+  privateBaseURL: "http://person.demo.svc:8080/person"
   methods:
-    banks:
-      friendlyName: banks
-    banks_id:
-      friendlyName: banks by id
-    atms:
-      friendlyName: atms
-    atms_id:
-      friendlyName: atms by id
-    products:
-      friendlyName: products
-    products_id:
-      friendlyName: products by code
-    branches:
-      friendlyName: branches
-    branches_id:
-      friendlyName: branches by id
+    person:
+      friendlyName: person
+    person_id:
+      friendlyName: person by id
   mappingRules:
     - httpMethod: GET
-      pattern: "/banks"
+      pattern: "/person"
       increment: 1
-      metricMethodRef: banks
+      metricMethodRef: person
     - httpMethod: GET
-      pattern: "/banks/{bank_id}"
+      pattern: "/person/{id}"
       increment: 1
-      metricMethodRef: banks_id
-    - httpMethod: GET
-      pattern: "/banks/{bank_id}/atms"
-      increment: 1
-      metricMethodRef: atms
-    - httpMethod: GET
-      pattern: "/banks/{bank_id}/atms/{atm_id}"
-      increment: 1
-      metricMethodRef: atms_id
-    - httpMethod: GET
-      pattern: "/banks/{bank_id}/products"
-      increment: 1
-      metricMethodRef: products
-    - httpMethod: GET
-      pattern: "/banks/{bank_id}/products/{product_code}"
-      increment: 1
-      metricMethodRef: products_id
-    - httpMethod: GET
-      pattern: "/banks/{bank_id}/branches"
-      increment: 1
-      metricMethodRef: branches
-    - httpMethod: GET
-      pattern: "/banks/{bank_id}/branches/{branch_id}"
-      increment: 1
-      metricMethodRef: branches_id
+      metricMethodRef: person_id
   metrics:
     hits:
       description: Number of API hits

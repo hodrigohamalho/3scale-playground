@@ -1,0 +1,14 @@
+apiVersion: apps.3scale.net/v1alpha1
+kind: APIcast
+metadata:
+  name: ramalho-gtw
+spec:
+  adminPortalCredentialsRef:
+    name: ramalho-gwt-secret
+  configurationLoadMode: lazy
+  cacheConfigurationSeconds: 0
+  pathRoutingEnabled: true
+  responseCodesIncluded: true
+  oidcLogLevel: info
+  extendedMetrics: true
+  deploymentEnvironment: staging

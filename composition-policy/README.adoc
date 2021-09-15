@@ -41,6 +41,11 @@ image::5-8-2021-18-19-00-PM.png[]
 
 image::5-8-2021-18-19-38-PM.png[]
 
+Access the swagger-ui, make sure to correct replace for the route address.
+
+    http://person-demo.apps.cluster-5f88.5f88.sandbox1482.opentlc.com/swagger-ui/
+
+
 ==== Account microservice
 
 image:5-8-2021-18-07-42-PM.png[]
@@ -52,6 +57,10 @@ image:5-8-2021-18-22-08-PM.png[]
 image::5-8-2021-18-26-18-PM.png[]
 
 image::5-8-2021-18-26-57-PM.png[]
+
+Access the swagger-ui, make sure to correct replace for the route address.
+
+    http://account-demo.apps.cluster-5f88.5f88.sandbox1482.opentlc.com/swagger-u
 
 === Kafka Deploy
 
